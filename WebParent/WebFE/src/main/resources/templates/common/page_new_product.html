@@ -1,0 +1,63 @@
+<div th:fragment="new-product">
+  <section class="product-section product-section-3 newForm" th:object="${products}">
+    <div class="container-fluid-lg">
+      <div class="title">
+        <h2>Hàng Mới</h2>
+      </div>
+      <div class="row g-sm-4 g-3">
+        <div class="col-xxl-12 ratio_110">
+          <div class="slider-6 img-slider">
+            <th:block th:each="product : ${products}">
+              <div>
+                <div class="product-box-5 wow fadeInUp">
+                  <div class="product-image">
+                    <a th:href="@{product-detail-{id}(id=${product.getId()})}">
+                      <img th:src="${product.getPhoto()}"
+                           class="img-fluid blur-up lazyload bg-img" alt="">
+                    </a>
+
+                    <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
+                       data-bs-placement="top" title="Wishlist">
+                      <i data-feather="bookmark"></i>
+                    </a>
+
+                    <ul class="product-option">
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                        <a th:href="@{/{id}(id=${product.getId()})}" data-bs-toggle="modal" data-bs-target="#view" class="modal1">
+                          <i data-feather="eye"></i>
+                        </a>
+                      </li>
+
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                        <a href="compare.html">
+                          <i data-feather="refresh-cw"></i>
+                        </a>
+                      </li>
+
+                      <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                        <a href="wishlist.html" class="notifi-wishlist">
+                          <i data-feather="heart"></i>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="product-detail">
+                    <a th:href="@{product-detail-{id}(id=${product.getId()})}">
+                      <h5 class="name" th:text="${product.getNameProduct()}"></h5>
+                    </a>
+
+                    <h5 class="sold text-content">
+                      <span class="theme-color price" th:text="${product.getPrice()}"></span>
+                      <!--                                    <del>28.56</del>-->
+                    </h5>
+                  </div>
+                </div>
+              </div>
+            </th:block>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

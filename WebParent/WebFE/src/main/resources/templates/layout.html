@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head th:replace="common/page_head :: page_head">
+
+<body class="theme-color-5">
+
+<!-- Loader Start -->
+<div class="fullpage-loader">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+<!-- Loader End -->
+
+<!-- Header Start -->
+<header class="">
+    <div class="header-top">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-xxl-3 d-xxl-block d-none">
+                    <div class="top-left-header">
+                        <i class="iconly-Location icli text-white"></i>
+                        <span class="text-white">Team CODEGYM FreshStart</span>
+                    </div>
+                </div>
+
+                <div class="col-xxl-6 col-lg-9 d-lg-block d-none">
+                    <div class="header-offer">
+                        <div class="notification-slider">
+                            <div>
+                                <div class="timer-notification">
+                                    <h6><strong class="me-1">Welcome to FreshStart!</strong>DỰ ÁN CUỐI KHOÁ FASHION E-COMMERCE<strong class="ms-1">
+                                    </strong>
+
+                                    </h6>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="timer-notification">
+                                    <h6>  THANKS FOR WATCHING !
+                                        <a href="shop-left-sidebar.html" class="text-white">
+                                            !</a>
+                                    </h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="top-nav top-header sticky-header">
+        <div class="container-fluid-lg">
+            <div class="row">
+                <div class="col-12">
+                    <div class="navbar-top">
+                        <button class="navbar-toggler d-xl-none d-inline navbar-menu-button" type="button"
+                                data-bs-toggle="offcanvas" data-bs-target="#primaryMenu">
+                                <span class="navbar-toggler-icon">
+                                    <i class="fa-solid fa-bars"></i>
+                                </span>
+                        </button>
+                        <a href="index.html" class="web-logo nav-logo">
+                            <img th:src="@{/assets/images/logo/6.png}" class="img-fluid blur-up lazyload" alt="">
+                        </a>
+
+                        <div class="header-nav-middle">
+                            <div class="main-nav navbar navbar-expand-xl navbar-light navbar-sticky">
+                                <div class="offcanvas offcanvas-collapse order-xl-2" id="primaryMenu">
+                                    <div class="offcanvas-header navbar-shadow">
+                                        <h5>Menu</h5>
+                                        <button class="btn-close lead" type="button" data-bs-dismiss="offcanvas"
+                                                aria-label="Close"></button>
+                                    </div>
+                                    <div class="offcanvas-body">
+                                        <ul class="navbar-nav">
+                                            <li class="nav-item">
+                                                <a class="nav-link "
+                                                   th:href="@{/}" >Home</a>
+                                            </li>
+
+                                            <li class="nav-item dropdown" th:object="${categories}">
+                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                   data-bs-toggle="dropdown">Category</a>
+                                                <ul class="dropdown-menu">
+                                                    <th:block th:each="category : ${categories}"}>
+                                                        <li>
+                                                            <a class="dropdown-item"
+                                                               href="shop-category-slider.html" th:text="${category.getName()}"></a>
+                                                        </li>
+                                                    </th:block>
+                                                </ul>
+                                            </li>
+
+                                            <li class="nav-item dropdown">
+                                                <a class="nav-link dropdown-toggle" href="javascript:void(0)"
+                                                   data-bs-toggle="dropdown">Product</a>
+
+                                                <ul class="dropdown-menu">
+                                                    <li>
+                                                        <a class="dropdown-item" href="product-4-image.html">Product
+                                                            4 Image</a>
+                                                    </li>
+                                                    <li class="sub-dropdown-hover">
+                                                        <a href="javascript:void(0)" class="dropdown-item">Product
+                                                            Thumbnail</a>
+                                                        <ul class="sub-menu">
+                                                            <li>
+                                                                <a href="product-left-thumbnail.html">Left
+                                                                    Thumbnail</a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="product-right-thumbnail.html">Right
+                                                                    Thumbnail</a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a href="product-bottom-thumbnail.html">Bottom
+                                                                    Thumbnail</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product-bundle.html" class="dropdown-item">Product
+                                                            Bundle</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product-slider.html" class="dropdown-item">Product
+                                                            Slider</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="product-sticky.html" class="dropdown-item">Product
+                                                            Sticky</a>
+                                                    </li>
+                                                </ul>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rightside-box">
+                            <div class="search-full">
+                                <div class="input-group">
+                                        <span class="input-group-text">
+                                            <i data-feather="search" class="font-light"></i>
+                                        </span>
+                                    <input type="text" class="form-control search-type" placeholder="Search here..">
+                                    <span class="input-group-text close-search">
+                                            <i data-feather="x" class="font-light"></i>
+                                        </span>
+                                </div>
+                            </div>
+                            <ul class="right-side-menu">
+                                <li class="right-side">
+                                    <div class="delivery-login-box">
+                                        <div class="delivery-icon">
+                                            <div class="search-box">
+                                                <i data-feather="search"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="right-side">
+                                    <a href="wishlist.html" class="btn p-0 position-relative header-wishlist">
+                                        <i data-feather="bookmark"></i>
+                                    </a>
+                                </li>
+                                <li class="right-side">
+                                    <div class="onhover-dropdown header-badge">
+                                        <a th:href="@{/shopping-cart}" type="button" class="btn p-0 position-relative header-wishlist">
+                                            <i data-feather="shopping-cart"></i>
+                                        </a>
+                                    </div>
+                                </li>
+                                <li class="right-side onhover-dropdown">
+
+                                    <div class="delivery-login-box">
+                                        <div class="delivery-icon">
+                                            <i data-feather="user" ></i>
+                                        </div>
+                                    </div>
+                                    <th:block sec:authorize="isAuthenticated()">
+                                        <div class="delivery-detail">
+                                            <h6>Hello,</h6>
+                                            <h5 sec:authentication="principal.fullName"></h5>
+                                        </div>
+                                    </th:block>
+                                    <div class="onhover-div onhover-div-login">
+                                        <th:block sec:authorize="isAuthenticated()">
+                                            <ul class="user-box-name-au">
+                                                <li class="product-box-contain">
+                                                    <a href="sign-up.html" sec:authentication="principal.fullName" ></a>
+                                                </li>
+                                                <li class="product-box-contain">
+                                                    <a th:href="@{/logout}">Logout</a>
+                                                </li>
+                                            </ul>
+                                        </th:block>
+                                        <ul class="user-box-name">
+                                            <li class="product-box-contain">
+                                                <i></i>
+                                                <a th:href="@{/login}">Log In</a>
+                                            </li>
+
+                                            <li class="product-box-contain">
+                                                <a href="sign-up.html">Register</a>
+                                            </li>
+
+                                            <li class="product-box-contain">
+                                                <a href="forgot.html">Forgot Password</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- Header End -->
+
+<!-- mobile fix menu start -->
+<div class="mobile-menu d-md-none d-block mobile-cart">
+    <ul>
+        <li class="active">
+            <a href="index.html">
+                <i class="iconly-Home icli"></i>
+                <span>Home</span>
+            </a>
+        </li>
+
+        <li class="mobile-category">
+            <a href="javascript:void(0)">
+                <i class="iconly-Category icli js-link"></i>
+                <span>Category</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="search.html" class="search-box">
+                <i class="iconly-Search icli"></i>
+                <span>Search</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="wishlist.html" class="notifi-wishlist">
+                <i class="iconly-Heart icli"></i>
+                <span>My Wish</span>
+            </a>
+        </li>
+
+        <li>
+            <a href="cart.html">
+                <i class="iconly-Bag-2 icli fly-cate"></i>
+                <span>Cart</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<!-- mobile fix menu end -->
+
+<!-- Home Section Start -->
+<section class="home-section-2 home-section-bg pt-0 overflow-hidden">
+    <div class="container-fluid p-0">
+        <div class="row">
+            <div class="col-12">
+                <div class="slider-animate">
+                    <div>
+                        <div class="home-contain rounded-0 p-0">
+                            <img th:src="@{/assets/images/fashion/home-banner/banner_1.png}"
+                                 class="img-fluid bg-img blur-up lazyload" alt="">
+                            <div class="home-detail home-big-space p-center-left home-overlay position-relative">
+                                <div class="container-fluid-lg">
+                                    <div>
+                                        <h6 class="ls-expanded text-uppercase text-danger">Weekend Special offer
+                                        </h6>
+                                        <h1 class="heding-2">Premium Quality</h1>
+                                        <h5 class="text-content">Fresh & Top Quality Dry Fruits are available here!
+                                        </h5>
+                                        <button onclick="location.href = 'shop-left-sidebar.html';"
+                                                class="btn theme-bg-color btn-md text-white fw-bold mt-md-4 mt-2 mend-auto">Shop
+                                            Now <i class="fa-solid fa-arrow-right icon"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Home Section End -->
+
+<!-- Deal Section Start -->
+<section class="product-section product-section-3 newForm" th:object="${products}">
+    <div class="container-fluid-lg">
+        <div class="title">
+            <h2>Hàng Mới</h2>
+        </div>
+        <div class="row g-sm-4 g-3">
+            <div class="col-xxl-12 ratio_110">
+                <div class="slider-6 img-slider">
+                    <th:block th:each="product : ${products}">
+                        <div>
+                            <div class="product-box-5 wow fadeInUp">
+                                <div class="product-image">
+                                    <a th:href="@{product-detail-{id}(id=${product.getId()})}">
+                                        <img th:src="${product.getPhoto()}"
+                                             class="img-fluid blur-up lazyload bg-img" alt="">
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
+                                       data-bs-placement="top" title="Wishlist">
+                                        <i data-feather="bookmark"></i>
+                                    </a>
+
+                                    <ul class="product-option">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            <a th:href="@{/{id}(id=${product.getId()})}" data-bs-toggle="modal" data-bs-target="#view" class="modal1">
+                                                <i data-feather="eye"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                            <a href="compare.html">
+                                                <i data-feather="refresh-cw"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                            <a href="wishlist.html" class="notifi-wishlist">
+                                                <i data-feather="heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="product-detail">
+                                    <a th:href="@{product-detail-{id}(id=${product.getId()})}">
+                                        <h5 class="name" th:text="${product.getNameProduct()}"></h5>
+                                    </a>
+
+                                    <h5 class="sold text-content">
+                                        <span class="theme-color price" th:text="${product.getPrice()}"></span>
+                                        <!--                                    <del>28.56</del>-->
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Deal Section End -->
+<!-- Deal Section Start -->
+<section class="product-section product-section-3" th:object="${menShirts}">
+    <div class="container-fluid-lg">
+        <div class="title">
+            <h2>Top Áo Nam</h2>
+        </div>
+        <div class="row g-sm-4 g-3 section-b-space">
+            <div class="col-xxl-12 ratio_110">
+                <div class="slider-6 img-slider">
+                    <th:block th:each="shirt : ${menShirts}">
+                        <div>
+                            <div class="product-box-5 wow fadeInUp">
+                                <div class="product-image">
+                                    <a href="product-left-thumbnail.html">
+                                        <img th:src="${shirt.getPhoto()}"
+                                             class="img-fluid blur-up lazyload bg-img" alt="">
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
+                                       data-bs-placement="top" title="Wishlist">
+                                        <i data-feather="bookmark"></i>
+                                    </a>
+
+                                    <ul class="product-option">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
+                                                <i data-feather="eye"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                            <a href="compare.html">
+                                                <i data-feather="refresh-cw"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                            <a href="wishlist.html" class="notifi-wishlist">
+                                                <i data-feather="heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="product-detail">
+                                    <a href="product-left-thumbnail.html">
+                                        <h5 class="name" th:text="${shirt.getNameProduct()}"></h5>
+                                    </a>
+
+                                    <h5 class="sold text-content">
+                                        <span class="theme-color price" th:text="${shirt.getPrice()}"></span>
+                                        <!--                                    <del>28.56</del>-->
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Deal Section End -->
+
+<!-- Deal Section Start -->
+<section class="product-section product-section-3" th:object="${malePants}">
+    <div class="container-fluid-lg">
+        <div class="title">
+            <h2>Top Quần Nam</h2>
+        </div>
+        <div class="row g-sm-4 g-3">
+            <div class="col-xxl-12 ratio_110">
+                <div class="slider-6 img-slider">
+                    <th:block th:each="malePant : ${malePants}">
+                        <div>
+                            <div class="product-box-5 wow fadeInUp">
+                                <div class="product-image">
+                                    <a href="product-left-thumbnail.html">
+                                        <img th:src="${malePant.getPhoto()}"
+                                             class="img-fluid blur-up lazyload bg-img" alt="">
+                                    </a>
+
+                                    <a href="javascript:void(0)" class="wishlist-top" data-bs-toggle="tooltip"
+                                       data-bs-placement="top" title="Wishlist">
+                                        <i data-feather="bookmark"></i>
+                                    </a>
+
+                                    <ul class="product-option">
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="View">
+                                            <a href="javascript:void(0)" data-bs-toggle="modal" data-bs-target="#view">
+                                                <i data-feather="eye"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Compare">
+                                            <a href="compare.html">
+                                                <i data-feather="refresh-cw"></i>
+                                            </a>
+                                        </li>
+
+                                        <li data-bs-toggle="tooltip" data-bs-placement="top" title="Wishlist">
+                                            <a href="wishlist.html" class="notifi-wishlist">
+                                                <i data-feather="heart"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="product-detail">
+                                    <a href="product-left-thumbnail.html">
+                                        <h5 class="name" th:text="${malePant.nameProduct}"></h5>
+                                    </a>
+
+                                    <h5 class="sold text-content">
+                                        <span class="theme-color price" th:text="${malePant.getPrice()}"></span>
+                                        <del>28.56</del>
+                                    </h5>
+                                </div>
+                            </div>
+                        </div>
+                    </th:block>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Deal Section End -->
+
+<!-- Newsletter Section Start -->
+<section class="newsletter-section section-b-space">
+    <div class="container-fluid-lg">
+        <div class="newsletter-box newsletter-box-2">
+            <div class="newsletter-contain py-5">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-xxl-4 col-lg-5 col-md-7 col-sm-9 offset-xxl-2 offset-md-1">
+                            <div class="newsletter-detail">
+                                <h2>Join our newsletter and get...</h2>
+                                <h5>$20 discount for your first order</h5>
+                                <div class="input-box">
+                                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                                           placeholder="Enter Your Email">
+                                    <i class="fa-solid fa-envelope arrow"></i>
+                                    <button class="sub-btn  btn-animation">
+                                        <span class="d-sm-block d-none">Subscribe</span>
+                                        <i class="fa-solid fa-arrow-right icon"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Newsletter Section End -->
+
+<!-- Quick View Modal Box Start -->
+<div class="modal fade theme-modal view-modal formModal" id="view" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header p-0">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body" th:object="${model}">
+                <div class="row g-sm-4 g-2">
+                    <div class="col-lg-6">
+                        <div class="slider-image">
+                            <img src="#" class="img-fluid blur-up lazyload"
+                                 alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="right-sidebar-modal">
+                            <h4 class="title-name">Peanut Butter Bite Premium Butter Cookies 600 g</h4>
+                            <h4 class="price">$36.99</h4>
+                            <div class="product-rating">
+                                <ul class="rating">
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star" class="fill"></i>
+                                    </li>
+                                    <li>
+                                        <i data-feather="star"></i>
+                                    </li>
+                                </ul>
+                                <span class="ms-2">8 Reviews</span>
+                                <span class="ms-2 text-danger">6 sold in last 16 hours</span>
+                            </div>
+
+                            <div class="product-detail">
+                                <h4>Product Details :</h4>
+                                <p>Candy canes sugar plum tart cotton candy chupa chups sugar plum chocolate I
+                                    love.
+                                    Caramels marshmallow icing dessert candy canes I love soufflé I love toffee.
+                                    Marshmallow pie sweet sweet roll sesame snaps tiramisu jelly bear claw.
+                                    Bonbon
+                                    muffin I love carrot cake sugar plum dessert bonbon.</p>
+                            </div>
+
+                            <ul class="brand-list">
+                                <li>
+                                    <div class="brand-box">
+                                        <h5>Brand Name:</h5>
+                                        <h6>Black Forest</h6>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="brand-box">
+                                        <h5>Product Code:</h5>
+                                        <h6>W0690034</h6>
+                                    </div>
+                                </li>
+
+                                <li>
+                                    <div class="brand-box">
+                                        <h5>Product Type:</h5>
+                                        <h6>White Cream Cake</h6>
+                                    </div>
+                                </li>
+                            </ul>
+
+                            <div class="select-size">
+                                <h4>Cake Size :</h4>
+                                <select class="form-select select-form-size">
+                                    <option selected>Select Size</option>
+                                    <option value="1.2">1/2 KG</option>
+                                    <option value="0">1 KG</option>
+                                    <option value="1.5">1/5 KG</option>
+                                    <option value="red">Red Roses</option>
+                                    <option value="pink">With Pink Roses</option>
+                                </select>
+                            </div>
+
+                            <div class="modal-button">
+                                <button onclick="location.href = 'cart.html';"
+                                        class="btn btn-md add-cart-button icon">Add
+                                    To Cart</button>
+                                <button onclick="location.href = 'product-left.html';"
+                                        class="btn theme-bg-color view-button icon text-white fw-bold btn-md">
+                                    View More Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Quick View Modal Box End -->
+
+<!-- Location Modal Start -->
+<div class="modal location-modal fade theme-modal" id="locationModal" tabindex="-1"
+     aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Choose your Delivery Location</h5>
+                <p class="mt-1 text-content">Enter your address and we will specify the offer for your area.</p>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="location-list">
+                    <div class="search-input">
+                        <input type="search" class="form-control" placeholder="Search Your Area">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </div>
+
+                    <div class="disabled-box">
+                        <h6>Select a Location</h6>
+                    </div>
+
+                    <ul class="location-select custom-height">
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Alabama</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Arizona</h6>
+                                <span>Min: $150</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>California</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Colorado</h6>
+                                <span>Min: $140</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Florida</h6>
+                                <span>Min: $160</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Georgia</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Kansas</h6>
+                                <span>Min: $170</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Minnesota</h6>
+                                <span>Min: $120</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>New York</h6>
+                                <span>Min: $110</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0)">
+                                <h6>Washington</h6>
+                                <span>Min: $130</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Location Modal End -->
+
+<!-- Cookie Bar Box Start -->
+<div class="cookie-bar-box">
+    <div class="cookie-box">
+        <div class="cookie-image">
+            <img th:src="@{/assets/images/cookie-bar.png}" class="blur-up lazyload" alt="">
+            <h2>Cookies!</h2>
+        </div>
+
+        <div class="cookie-contain">
+            <h5 class="text-content">We use cookies to make your experience better</h5>
+        </div>
+    </div>
+
+    <div class="button-group">
+        <button class="btn privacy-button">Privacy Policy</button>
+        <button class="btn ok-button">OK</button>
+    </div>
+</div>
+<!-- Cookie Bar Box End -->
+
+<!-- Deal Box Modal Start -->
+<div class="modal fade theme-modal deal-modal" id="deal-box" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-fullscreen-sm-down">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div>
+                    <h5 class="modal-title w-100" id="deal_today">Deal Today</h5>
+                    <p class="mt-1 text-content">Recommended deals for you.</p>
+                </div>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="deal-offer-box">
+                    <ul class="deal-offer-list">
+                        <li class="list-1">
+                            <div class="deal-offer-contain">
+                                <a href="shop-left-sidebar.html" class="deal-image">
+                                    <img th:src="@{/assets/images/vegetable/product/10.png}" class="blur-up lazyload"
+                                         alt="">
+                                </a>
+
+                                <a href="shop-left-sidebar.html" class="deal-contain">
+                                    <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                    <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="list-2">
+                            <div class="deal-offer-contain">
+                                <a href="shop-left-sidebar.html" class="deal-image">
+                                    <img th:src="@{/assets/images/vegetable/product/11.png}" class="blur-up lazyload"
+                                         alt="">
+                                </a>
+
+                                <a href="shop-left-sidebar.html" class="deal-contain">
+                                    <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                    <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="list-3">
+                            <div class="deal-offer-contain">
+                                <a href="shop-left-sidebar.html" class="deal-image">
+                                    <img th:src="@{/assets/images/vegetable/product/12.png}" class="blur-up lazyload"
+                                         alt="">
+                                </a>
+
+                                <a href="shop-left-sidebar.html" class="deal-contain">
+                                    <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                    <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                </a>
+                            </div>
+                        </li>
+
+                        <li class="list-1">
+                            <div class="deal-offer-contain">
+                                <a href="shop-left-sidebar.html" class="deal-image">
+                                    <img th:src="@{/assets/images/vegetable/product/13.png}" class="blur-up lazyload"
+                                         alt="">
+                                </a>
+
+                                <a href="shop-left-sidebar.html" class="deal-contain">
+                                    <h5>Blended Instant Coffee 50 g Buy 1 Get 1 Free</h5>
+                                    <h6>$52.57 <del>57.62</del> <span>500 G</span></h6>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Deal Box Modal End -->
+
+<!-- Tap to top start -->
+<div class="theme-option">
+    <div class="back-to-top">
+        <a id="back-to-top" href="#">
+            <i class="fas fa-chevron-up"></i>
+        </a>
+    </div>
+</div>
+<!-- Tap to top end -->
+
+<!-- Bg overlay Start -->
+<div class="bg-overlay"></div>
+<!-- Bg overlay End -->
+
+<!-- latest jquery-->
+<script th:src="@{/assets/js/jquery-3.6.0.min.js}"></script>
+
+<!-- jquery ui-->
+<script th:src="@{/assets/js/jquery-ui.min.js}"></script>
+
+<!-- Bootstrap js-->
+<script th:src="@{/assets/js/bootstrap/bootstrap.bundle.min.js}"></script>
+<script th:src="@{/assets/js/bootstrap/bootstrap-notify.min.js}"></script>
+<script th:src="@{/assets/js/bootstrap/popper.min.js}"></script>
+
+<!-- feather icon js-->
+<script th:src="@{/assets/js/feather/feather.min.js}"></script>
+<script th:src="@{/assets/js/feather/feather-icon.js}"></script>
+
+<!-- Lazyload Js -->
+<script th:src="@{/assets/js/lazysizes.min.js}"></script>
+
+<!-- Slick js-->
+<script th:src="@{/assets/js/slick/slick.js}"></script>
+<script th:src="@{/assets/js/slick/slick-animation.min.js}"></script>
+<script th:src="@{/assets/js/slick/custom_slick.js}"></script>
+
+<!-- Auto Height Js -->
+<script th:src="@{/assets/js/auto-height.js}"></script>
+
+<!-- WOW js -->
+<script th:src="@{/assets/js/wow.min.js}"></script>
+<script th:src="@{/assets/js/custom-wow.js}"></script>
+
+<!-- script js -->
+<script th:src="@{/assets/js/script.js}"></script>
+<script>
+    let detail = document.getElementsByClassName("delivery-detail")[0];
+    let option = document.getElementsByClassName("user-box-name")[0];
+    if(detail.innerHTML){
+        option.style.display = "none";
+    }
+</script>
+</body>
+
+</html>
